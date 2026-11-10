@@ -1,0 +1,62 @@
+# Mfuko POS — Apache rules (the vhost repeats the important ones)
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Always HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+  # Private folders
+  RewriteRule ^(app|config|sql|storage|tools|legacy)(/|$) - [F,L]
+
+  # Hidden files (.env, .git, .htaccess) except Let's Encrypt
+  RewriteRule (^|/)\.(?!well-known/) - [F,L]
+
+  # Never execute scripts inside uploads
+  RewriteRule ^uploads/.*\.(php\d?|phtml|phar|pl|py|cgi|sh)$ - [F,L,NC]
+</IfModule>
+
+# Sensitive file types
+<FilesMatch "\.(env|sql|md|log|lock|json|example|ini|sh|bak|dist)$">
+  Require all denied
+</FilesMatch>
+
+AddType application/manifest+json .webmanifest
+AddType image/webp .webp
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "same-origin"
+  # camera=(self) is needed for barcode scanning and product photos
+  Header always set Permissions-Policy "camera=(self), microphone=(), geolocation=()"
+</IfModule>
+
+# Static assets: long cache (URLs carry ?v= so updates still load)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css               "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType image/svg+xml          "access plus 30 days"
+  ExpiresByType image/png              "access plus 30 days"
+  ExpiresByType image/webp             "access plus 30 days"
+  ExpiresByType image/jpeg             "access plus 30 days"
+</IfModule>
+
+# Service worker and manifest must always be re-checked, or app updates get stuck
+<FilesMatch "^(sw\.js|manifest\.webmanifest)$">
+  <IfModule mod_expires.c>
+    ExpiresActive Off
+  </IfModule>
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, must-revalidate"
+  </IfModule>
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>

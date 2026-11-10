@@ -1,0 +1,3 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Subscription paused · Mfuko POS</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui,sans-serif;background:#2B1B57;color:#fff;text-align:center}.c{max-width:420px;padding:32px}img{width:72px}a{color:#FFD36E}</style></head>
+<body><div class="c"><img src="assets/img/logo.svg" alt=""><h1>Subscription paused</h1><p>Your Mfuko POS subscription needs renewal. Your data is safe. Please contact your Mfuko provider to reactivate.</p></div></body></html>

@@ -49,7 +49,7 @@ $mfConfig = [
 <link rel="stylesheet" href="<?= asset('css/mfuko.css') ?>">
 <?php if ($layout === 'pos'): ?><link rel="stylesheet" href="<?= asset('css/sell.css') ?>"><?php endif; ?>
 <script>
-(function(){var t=document.documentElement,p=t.dataset.theme;try{p=localStorage.getItem('mf-theme')||p}catch(e){}
+(function(){var t=document.documentElement,p=t.dataset.theme;try{var s=localStorage.getItem('mf-theme');if(s){s=s.replace(/"/g,'');if(s==='light'||s==='dark')p=s}}catch(e){}
 if(p==='auto'||!p){p=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}t.dataset.theme=p;
 var m=document.querySelector('meta[name=theme-color]');if(m)m.content=p==='dark'?'#050508':'#163B23';})();
 window.MF = <?= json_encode($mfConfig, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?>;

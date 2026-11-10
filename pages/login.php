@@ -14,7 +14,7 @@ $logo = Settings::get('business_logo');
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= asset('css/mfuko.css') ?>">
 <script>
-(function(){var t=document.documentElement,p=t.dataset.theme;try{p=localStorage.getItem('mf-theme')||p}catch(e){}
+(function(){var t=document.documentElement,p=t.dataset.theme;try{var s=localStorage.getItem('mf-theme');if(s){s=s.replace(/"/g,'');if(s==='light'||s==='dark')p=s}}catch(e){}
 if(p==='auto'||!p){p=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}t.dataset.theme=p;
 var m=document.querySelector('meta[name=theme-color]');if(m)m.content=p==='dark'?'#050508':'#163B23';})();
 window.MF = {csrf: <?= json_encode(csrf_token()) ?>, icons: {}};

@@ -46,17 +46,17 @@ window.MF = {csrf: <?= json_encode(csrf_token()) ?>, icons: {}};
       <p class="muted">Sign in to start selling.</p>
 
       <div class="seg" style="margin:6px 0 18px" id="modeSeg">
-        <button type="button" class="on" data-mode="pw">Password</button>
-        <button type="button" data-mode="pin">Quick PIN</button>
+        <button type="button" class="on" data-mode="pin">Quick PIN</button>
+        <button type="button" data-mode="pw">Password</button>
       </div>
 
-      <form id="pwForm" autocomplete="on">
-        <div class="field"><label for="u">Username or email</label><input id="u" name="username" type="text" autocomplete="username" autocapitalize="none" required autofocus></div>
+      <form id="pwForm" class="hide" autocomplete="on">
+        <div class="field"><label for="u">Username or email</label><input id="u" name="username" type="text" autocomplete="username" autocapitalize="none" required></div>
         <div class="field"><label for="pw">Password</label><input id="pw" name="password" type="password" autocomplete="current-password" required></div>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
       </form>
 
-      <form id="pinForm" class="hide">
+      <form id="pinForm">
         <div class="pin-dots" id="pinDots"><i></i><i></i><i></i><i></i></div>
         <div class="pinpad" id="pinpad">
           <?php foreach ([1,2,3,4,5,6,7,8,9] as $n): ?><button type="button" data-k="<?= $n ?>"><?= $n ?></button><?php endforeach; ?>
@@ -82,6 +82,7 @@ window.MF = {csrf: <?= json_encode(csrf_token()) ?>, icons: {}};
     $$('#modeSeg button').forEach(x => x.classList.toggle('on', x === b));
     $('#pwForm').classList.toggle('hide', b.dataset.mode !== 'pw');
     $('#pinForm').classList.toggle('hide', b.dataset.mode !== 'pin');
+    if (b.dataset.mode === 'pw') $('#u').focus();
   });
   let pin = '';
   const dots = () => { const n = Math.max(4, pin.length); $('#pinDots').innerHTML = Array.from({length:n}, (_, i) => `<i class="${i < pin.length ? 'on' : ''}"></i>`).join(''); };

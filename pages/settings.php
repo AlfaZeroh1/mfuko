@@ -10,7 +10,7 @@ $tabs = [
     'regional' => ['Time & currency', 'clock', [
         'timezone' => ['Timezone (applies to the app AND the database)', 'tz'], 'currency' => ['Currency code', 'text'], 'currency_symbol' => ['Currency symbol', 'text'],
         'date_format' => ['Date format', 'select', ['d M Y' => '10 Nov 2026', 'd/m/Y' => '10/11/2026', 'Y-m-d' => '2026-11-10', 'M j, Y' => 'Nov 10, 2026']],
-        'default_theme' => ['Default theme', 'select', ['auto' => 'Follow device', 'light' => 'Savanna day (light)', 'dark' => 'Nairobi night (dark)']],
+        'default_theme' => ['Default theme', 'select', ['auto' => 'Follow device', 'light' => 'Solar Garden (light)', 'dark' => 'Wakanda Night (dark)']],
     ]],
     'sales' => ['Selling', 'cart', [
         'default_sale_type' => ['Default sale type', 'select', ['retail' => 'Retail', 'wholesale' => 'Wholesale']],

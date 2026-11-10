@@ -82,8 +82,8 @@ final class Mailer
             . '<span style="display:none">' . e($preheader) . '</span>'
             . '<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">'
             . '<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:14px;overflow:hidden">'
-            . '<tr><td style="height:6px;background:linear-gradient(90deg,#C4502A,#E3A92B,#1E8A5A,#2B1B57)"></td></tr>'
-            . '<tr><td style="padding:22px 26px 6px">' . $logo . '<div style="font-size:20px;font-weight:700;color:#2B1B57">' . e($b['business_name']) . '</div></td></tr>'
+            . '<tr><td style="height:6px;background:linear-gradient(90deg,#D4AF37,#9B5CFF,#4C6FFF)"></td></tr>'
+            . '<tr><td style="padding:22px 26px 6px">' . $logo . '<div style="font-size:20px;font-weight:700;color:#0B0B14">' . e($b['business_name']) . '</div></td></tr>'
             . '<tr><td style="padding:10px 26px 26px;font-size:15px;line-height:1.6">' . $inner . '</td></tr>'
             . '<tr><td style="padding:14px 26px;background:#FBF7F0;font-size:12px;color:#7A7088">' . e(implode(' · ', array_filter([$b['business_address'], $b['business_town'], $b['business_phone']]))) . '</td></tr>'
             . '</table></td></tr></table></body></html>';

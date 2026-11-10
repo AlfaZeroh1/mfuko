@@ -10,7 +10,7 @@
   <rect x="18.5" y="19" width="27" height="5.5" rx="2.75" fill="#2B1B57"/>
   <circle cx="24" cy="21.75" r="1.2" fill="#FFD36E"/><circle cx="32" cy="21.75" r="1.2" fill="#FFD36E"/><circle cx="40" cy="21.75" r="1.2" fill="#FFD36E"/>
   <path d="M20.5 45V31.5L32 41l11.5-9.5V45" fill="none" stroke="#FFF3DC" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="68" y="44" font-family="Outfit, 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="700" fill="#2B1B57" letter-spacing="-0.5">Mfuko</text>
-  <text x="176" y="44" font-family="Outfit, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" fill="#D9881C" letter-spacing="4">POS</text>
+  <text x="68" y="44" font-family="Sora, 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="700" fill="#2B1B57" letter-spacing="-0.5">Mfuko</text>
+  <text x="176" y="44" font-family="Sora, 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" fill="#D9881C" letter-spacing="4">POS</text>
   <path d="M176 51h44" stroke="#C4502A" stroke-width="2.5"/><path d="M176 51h11" stroke="#1E8A5A" stroke-width="2.5"/><path d="M198 51h11" stroke="#E3A92B" stroke-width="2.5"/>
 </svg>

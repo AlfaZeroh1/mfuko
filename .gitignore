@@ -1,0 +1,14 @@
+# Secrets and server-specific config
+config/.env
+
+# Runtime files
+storage/logs/*
+!storage/logs/.gitkeep
+storage/*.lock
+
+# User uploads (product photos, avatars, logos)
+uploads/*/*
+!uploads/*/.gitkeep
+
+# OS / editor
+.DS_Store

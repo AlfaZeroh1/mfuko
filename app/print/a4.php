@@ -7,7 +7,7 @@ $tone = ['green' => '#1E8A5A', 'gold' => '#B7790F', 'danger' => '#C2362B', 'indi
 <style>
 @page { size: A4; margin: 14mm 12mm; }
 * { box-sizing: border-box; }
-body { margin: 0; font-family: 'Outfit', 'Segoe UI', Arial, sans-serif; color: #1F1830; font-size: 12.5px; background: #EEE7DA; }
+body { margin: 0; font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; color: #1F1830; font-size: 12.5px; background: #EEE7DA; }
 .sheet { width: 210mm; min-height: 297mm; margin: 16px auto; padding: 14mm 12mm; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.15); position: relative; }
 .kente { height: 6px; background: repeating-linear-gradient(90deg,#C4502A 0 22px,#E3A92B 22px 34px,#1E8A5A 34px 52px,#2B1B57 52px 60px,#E3A92B 60px 66px); margin: -14mm -12mm 10mm; }
 .head { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }

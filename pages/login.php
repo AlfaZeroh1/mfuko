@@ -6,16 +6,17 @@ $logo = Settings::get('business_logo');
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#2B1B57">
+<meta name="theme-color" content="#050508">
 <title>Sign in · <?= e($biz) ?> · Mfuko POS</title>
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= asset('css/mfuko.css') ?>">
 <script>
 (function(){var t=document.documentElement,p=t.dataset.theme;try{p=localStorage.getItem('mf-theme')||p}catch(e){}
-if(p==='auto'||!p){p=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}t.dataset.theme=p;})();
+if(p==='auto'||!p){p=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}t.dataset.theme=p;
+var m=document.querySelector('meta[name=theme-color]');if(m)m.content=p==='dark'?'#050508':'#163B23';})();
 window.MF = {csrf: <?= json_encode(csrf_token()) ?>, icons: {}};
 </script>
 <script src="<?= asset('js/mfuko.js') ?>"></script>

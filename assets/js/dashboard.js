@@ -12,7 +12,7 @@
 
   function chartDefaults() {
     if (!window.Chart) return false;
-    Chart.defaults.font.family = 'Outfit, system-ui, sans-serif';
+    Chart.defaults.font.family = "'Plus Jakarta Sans', system-ui, sans-serif";
     Chart.defaults.color = css('--muted');
     Chart.defaults.borderColor = css('--border');
     return true;
@@ -33,7 +33,7 @@
     g.addColorStop(0, css('--primary') + '55'); g.addColorStop(1, css('--primary') + '00');
     new Chart(el, { type: 'line', data: { labels: labels.map(d => d.slice(5)), datasets: [
       { label: 'Revenue', data: actual, borderColor: css('--primary'), backgroundColor: g, fill: true, tension: .35, pointRadius: 0, borderWidth: 2.5 },
-      { label: 'AI forecast', data: fc, borderColor: css('--gold'), borderDash: [6, 5], pointRadius: 0, tension: .35, borderWidth: 2, fill: false },
+      { label: 'AI forecast', data: fc, borderColor: css('--accent'), borderDash: [6, 5], pointRadius: 0, tension: .35, borderWidth: 2, fill: false },
     ] }, options: { maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { labels: { boxWidth: 10, usePointStyle: true } }, tooltip: { callbacks: { label: c => c.raw === null ? '' : ' ' + c.dataset.label + ': ' + money(c.raw) } } },
       scales: { x: { grid: { display: false }, ticks: { maxTicksLimit: 10 } }, y: { ticks: { callback: v => short(v) } } } } });
   }

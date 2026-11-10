@@ -68,7 +68,7 @@ $guessUrl = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https
 ?><!doctype html>
 <html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Install Mfuko POS</title><link rel="icon" href="assets/img/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/mfuko.css"></head>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/mfuko.css"></head>
 <body><div class="auth-page"><section class="auth-art"><div class="sun"></div><div class="brand" style="padding:0"><img src="assets/img/logo.svg" style="width:46px;height:46px" alt=""><div><b style="font-size:1.6rem">Mfuko</b><small>POS</small></div></div>
 <div><h1>Let’s set up your <em>mfuko</em>.</h1><p style="color:rgba(255,255,255,.8);max-width:40ch">Two minutes: connect the database, name your business, create the owner account.</p></div><div class="small" style="color:rgba(255,255,255,.6)">Mfuko POS v<?= MF_VERSION ?></div></section>
 <section class="auth-form" style="align-items:start;overflow:auto"><div class="auth-card" style="width:min(560px,100%)">

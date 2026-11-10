@@ -11,7 +11,7 @@
     const owed = amount ?? customer.debt;
     MF.modal({
       title: 'Receive payment · ' + customer.name,
-      body: `<div class="pay-due" style="display:flex;justify-content:space-between;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,var(--indigo),#47308f);color:#fff;margin-bottom:14px"><span>${saleId ? 'Invoice balance' : 'Total owed'}</span><b style="font-size:1.6rem">${money(owed)}</b></div>
+      body: `<div class="pay-due" style="display:flex;justify-content:space-between;padding:14px 16px;border-radius:16px;background:var(--hero-bg);color:#fff;margin-bottom:14px"><span>${saleId ? 'Invoice balance' : 'Total owed'}</span><b style="font-size:1.6rem">${money(owed)}</b></div>
         <div class="form-grid">
           <div class="field"><label>Amount received</label><input type="number" inputmode="decimal" step="0.01" min="0" name="amount" value="${owed}" required></div>
           <div class="field"><label>Method</label><select name="account">

@@ -22,10 +22,10 @@
   </div>
   <div class="stack">
     <div class="card card-pad"><h3><?= icon('lock', 'sm') ?> Password</h3>
-      <form id="pw" onsubmit="return false"><div class="field"><label>Current password</label><input type="password" name="current" autocomplete="current-password" required></div>
+      <form id="pw" method="post" onsubmit="return false"><div class="field"><label>Current password</label><input type="password" name="current" autocomplete="current-password" required></div>
       <div class="field"><label>New password (8+ characters)</label><input type="password" name="new" autocomplete="new-password" minlength="8" required></div><button class="btn">Change password</button></form></div>
     <div class="card card-pad"><h3><?= icon('key', 'sm') ?> Quick PIN</h3><p class="small muted">Sign in at the counter with a 4–8 digit PIN. <?= $u['pin_hash'] ? '<b class="text-green">PIN is set.</b>' : 'No PIN set.' ?></p>
-      <form id="pin" class="row nowrap" onsubmit="return false"><input name="pin" inputmode="numeric" maxlength="8" placeholder="New PIN"><button class="btn">Save</button></form>
+      <form id="pin" method="post" class="row nowrap" onsubmit="return false"><input name="pin" inputmode="numeric" maxlength="8" placeholder="New PIN"><button class="btn">Save</button></form>
       <?php if ($u['pin_hash']): ?><button class="btn btn-sm btn-ghost mt" id="pinRm">Remove PIN</button><?php endif; ?></div>
     <div class="card card-pad"><h3>Appearance</h3><div class="seg"><button data-theme-set="light">Light</button><button data-theme-set="dark">Dark</button></div></div>
   </div>
@@ -34,8 +34,18 @@
 MF.ready(() => {
   const { $ } = MF;
   $('#saveP').onclick = async () => { if (!$('#pf').reportValidity()) return; await MF.api('profile.update', MF.formData($('#pf'))); MF.toast('Profile saved', 'ok'); };
-  $('#pw').onsubmit = async () => { await MF.api('profile.password', MF.formData($('#pw'))); MF.toast('Password changed', 'ok'); $('#pw').reset(); };
-  $('#pin').onsubmit = async () => { await MF.api('profile.pin', MF.formData($('#pin'))); MF.toast('PIN saved', 'ok'); location.reload(); };
+  // Submit via the API only; never let the browser do a normal (GET) form submit.
+  const onSave = (form, fn) => form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('button'); btn.classList.add('loading');
+    try { await fn(); } catch (err) { /* error toast already shown */ } finally { btn.classList.remove('loading'); }
+  });
+  onSave($('#pw'), async () => { await MF.api('profile.password', MF.formData($('#pw'))); MF.toast('Password changed', 'ok'); $('#pw').reset(); });
+  onSave($('#pin'), async () => {
+    const pin = $('#pin [name=pin]').value.trim();
+    if (!/^\d{4,8}$/.test(pin)) { MF.toast('PIN must be 4–8 digits', 'warn'); return; }
+    await MF.api('profile.pin', { pin }); MF.toast('PIN saved — use it on the sign-in screen', 'ok'); setTimeout(() => location.reload(), 700);
+  });
   $('#pinRm') && ($('#pinRm').onclick = async () => { await MF.api('profile.pin', { pin: '' }); location.reload(); });
   $('#avIn').onchange = async e => { const f = e.target.files[0]; if (!f) return; const fd = new FormData(); fd.append('avatar', f); await MF.api('profile.avatar', fd); location.reload(); };
   $('#avRm') && ($('#avRm').onclick = async () => { await MF.api('profile.avatar', { remove: 1 }); location.reload(); });
